@@ -12,7 +12,7 @@ function renderReactSvg(svg:string){
         }
     })
     let outputStr = result.data
-    let lines = outputStr.replaceAll(/\b[a-z0-9]+-[a-z0-9]+=/g,(a:any)=>{
+    let lines = outputStr.replaceAll(/\b[a-z0-9]+(-[a-z0-9]+)+=/g,(a:any)=>{
         let xs = a.split("-")
         let [head,...rest] = xs
         return head + rest.map((word:string)=>{
