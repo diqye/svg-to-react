@@ -12,8 +12,8 @@ function renderReactSvg(svg:string){
         }
     })
     let outputStr = result.data
-    let lines = outputStr.replaceAll(/\b[a-z0-9]+(-[a-z0-9]+)+=/g,(a:any)=>{
-        let xs = a.split("-")
+    let lines = outputStr.replaceAll(/\b[a-z0-9]+([-:][a-z0-9]+)+=/g,(a:any)=>{
+        let xs = a.split(/[-:]/) 
         let [head,...rest] = xs
         return head + rest.map((word:string)=>{
             return word.slice(0,1).toUpperCase() + word.slice(1)
