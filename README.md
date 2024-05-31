@@ -34,8 +34,7 @@ export function DiqyeSvg(props: SVGProps<SVGSVGElement>) {
 
 ## 主要解决的问题
 
-从公司UI下载的SVG，在手工写为React组件时，经常遇到颜色显示不正确、多个SVG相互影响的问题。遂做一个CLI工具,将SVG转为可以直接使用的React组件。。
-
 - 去除冗余的标签和ID
-- 转换名字为符合React svg风格的驼峰命名
-- 复制友好的输出
+- ID唯一化
+- 转换为符合React SVG组件规范的的属性
+- 格式化,Copy 友好

@@ -3,13 +3,30 @@ import { readAll } from "https://deno.land/std@0.224.0/io/read_all.ts";
 import { optimize } from "npm:svgo"
 
 
+export function createUUID(n=7){
+    let arr = new Array<number>(n)
+    let newArr = arr.fill(0).map(_=>Math.floor(Math.random()*36))
+    let r = newArr.map(a=>a.toString(36)).join("")
+    return r
+}
+
 function renderReactSvg(svg:string){
-    let result = optimize(svg,{
+    let result1 = optimize(svg,{
+        
+    })
+    let result = optimize(result1.data,{
         multipass: true,
         js2svg:{
             indent: 4,
             pretty: true
-        }
+        },
+        plugins: [{
+            name: 'prefixIds',
+            params: {
+                delim: '',
+                prefix: () => createUUID(3),
+            }
+        } as any]
     })
     let outputStr = result.data
     let lines = outputStr.replaceAll(/\b[a-z0-9]+([-:][a-z0-9]+)+=/g,(a:any)=>{
